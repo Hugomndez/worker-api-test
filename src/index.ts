@@ -10,6 +10,7 @@
 
 // Import request using an alias to avoid collisions with Cloudflare's implementation of Request in the fetch method
 import { Router, IRequest } from 'itty-router';
+import { v4 as uuidv4 } from 'uuid';
 
 const router = Router();
 
@@ -40,8 +41,7 @@ router.post('/animals', async (req: IRequest, env: Env) => {
     return new Response('Please provide a body');
   }
 
-  // Do not use this in production, use UUID
-  content['id'] = Date.now();
+  content['id'] = uuidv4();
 
   let animal = await addAnimal(content, env);
 
