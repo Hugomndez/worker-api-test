@@ -95,6 +95,6 @@ export default {
     env: Env,
     ctx: ExecutionContext
   ): Promise<Response> {
-    return await router.handle(request);
+    return await router.handle(request, env);
   },
 };
