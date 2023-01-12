@@ -1,3 +1,6 @@
 name = "worker-api-test"
 main = "src/index.ts"
 compatibility_date = "2023-01-12"
+kv_namespaces = [
+  { binding = "ANIMALS", id = "6519883e8f644cb9a8fb6ea364e28f9e", preview_id = "b994421e426046b1a23a5d3b970ea6b5" }
+]
