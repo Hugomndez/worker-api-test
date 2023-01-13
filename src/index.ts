@@ -28,12 +28,12 @@ router.get('/animals', async (req: IRequest, env: Env) => {
 router.get('/animals/:id', async (req: IRequest, env: Env) => {
   let animals = await getAllAnimals(env);
 
-  let animal = animals.find(a => a['id'] == Number(req.params?.id));
+  let animal = animals.find(({ id }) => id === req.params?.id);
 
   return new Response(JSON.stringify(animal));
 });
 
-// Register the route to create and animal
+// Register the route to create an animal
 router.post('/animals', async (req: IRequest, env: Env) => {
   let content = await req.json?.();
 
