@@ -48,6 +48,17 @@ router.post('/animals', async (req: IRequest, env: Env) => {
   return new Response(JSON.stringify(animal));
 });
 
+// Register the route to delete an animal
+router.delete('/animals/:id', async (req: IRequest, env: Env) => {
+  let animals = await getAllAnimals(env);
+
+  let newAnimals = animals.filter(({ id }) => id !== req.params?.id);
+
+  await updateAnimals(newAnimals, env);
+
+  return new Response(JSON.stringify(newAnimals));
+});
+
 // Return 404 for everything else
 router.all('*', req => new Response('Not Found', { status: 404 }));
 
